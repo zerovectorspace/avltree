@@ -55,6 +55,9 @@ data AVLTree k v = X
                   , rt :: (AVLTree k v)
                   } deriving (Read, Show)
 
+instance Functor (AVLTree a) where
+  fmap = map
+
 add :: (Ord a) => (a, b) -> AVLTree a b -> AVLTree a b
 add kv@(nk,_) X = T kv X X
 add nkv@(nk,_) (T kv@(k,v) l r)
