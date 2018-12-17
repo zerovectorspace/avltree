@@ -1,5 +1,5 @@
 {-
-  This file is part of AVLAVLTree.
+  This file is part of AVLTree.
 
   fct is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -50,10 +50,10 @@ import Data.Char
 
 type Balance = Int
 data AVLTree k v = X
-              | T { pr :: (k, v)
-                  , lt :: (AVLTree k v)
-                  , rt :: (AVLTree k v)
-                  } deriving (Read, Show)
+                 | T { pr :: (k, v)
+                     , lt :: (AVLTree k v)
+                     , rt :: (AVLTree k v)
+                     } deriving (Read, Show)
 
 instance Functor (AVLTree a) where
   fmap = map
