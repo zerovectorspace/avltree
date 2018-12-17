@@ -30,9 +30,9 @@ rMax = 100                               -- Upper bound on random Int
 num = 50                                 -- Number of branches
 bounds = (+rMin) . (`mod` (rMax-rMin+1)) -- [rMin,rMax] i.e. inclusive
 
-a :: [(String,[Int])] -> T.AVLTree String [Int]
-a = T.map (filter even)    -- Keep only even numbers
-  . foldl (flip T.add) T.X -- Apply T.add to create Tree
+buildTree :: [(String,[Int])] -> T.AVLTree String [Int]
+buildTree = T.map (filter even) -- Keep only even numbers
+  . foldl (flip T.add) T.X      -- Apply T.add to create Tree
 
 kRnds :: POSIXTime -> [[Char]]
 kRnds = take num
@@ -57,6 +57,6 @@ main = do
   getPOSIXTime
   >>= \t ->
     print
-    . a
+    . buildTree
     $ zip (kRnds t) (vRnds t)
 
