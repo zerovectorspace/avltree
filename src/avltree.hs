@@ -256,9 +256,6 @@ upd f nkv@(nk,nv) (T kv@(k,v) l r)
   | nk < k = T kv (upd f nkv l) r
   | nk > k = T kv l (upd f nkv r)
   | otherwise = T (k, f v nv) l r
-  where
-  balL = bal $ T kv (upd f nkv l) r
-  balR = bal $ T kv l (upd f nkv r)
 
 vals :: AVLTree a b -> [b]
 vals X = []
