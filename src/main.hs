@@ -35,10 +35,10 @@ buildTree = T.map (filter even) -- Keep only even numbers
   . foldl (flip T.add) T.X      -- Apply T.add to create Tree
 
 kRnds :: POSIXTime -> [[Char]]
-kRnds = take num
-      . map ( \ns -> map (chr . (+0x61)) ns )
-      . chunksOf                           3
-      . map ( \x -> x `mod` (25-0-1) + 0   )
+kRnds = take num                              -- Take finite amount
+      . map ( \ns -> map (chr . (+0x61)) ns ) -- [[Int]] -> [[Char]]
+      . chunksOf 3                            -- Make [[Int]]
+      . map ( \x -> x `mod` (25-0-1) + 0   )  -- Constrain Int between [0,25]
       . rnds
 
 vRnds :: POSIXTime -> [[Int]]
