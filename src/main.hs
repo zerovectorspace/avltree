@@ -43,7 +43,7 @@ kRnds = take num                              -- Take finite amount
 
 vRnds :: POSIXTime -> [[Int]]
 vRnds = take num    -- Take finite amount
-      . chunksOf 10 -- make [[Int]]
+      . chunksOf 10 -- Make [[Int]]
       . map bounds  -- Constrain the values
       . rnds
 
