@@ -30,6 +30,7 @@ module AVLTree ( AVLTree ( X, T )
             , keys
             , levelOrder
             , map
+            , mapKey
             , max
             , min
             , postOrder
@@ -163,6 +164,9 @@ levelOrder t = go [t] []
 map :: (b -> c) -> AVLTree a b -> AVLTree a c
 map f X = X
 map f (T (k,v) l r) = T (k,f v) (map f l) (map f r)
+
+mapKey :: (Ord a, Ord b) => (a -> b) -> AVLTree a c -> AVLTree b c
+mapKey f tr = build (fmap (\(k,v) -> (f k,v)) (toList tr)) X
 
 -- Maximum key
 max :: AVLTree a b -> (a,b)
