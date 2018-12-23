@@ -34,7 +34,7 @@ module AVLTree ( AVLTree ( X, T )
             , min
             , postOrder
             , preOrder
-            , print
+            , printT
             , size
             , toList
             , toListR
