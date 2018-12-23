@@ -45,7 +45,6 @@ module AVLTree ( AVLTree ( X, T )
 
 import Prelude hiding (map, max, min, mapM_)
 import Data.Maybe
-import Data.List hiding (map, rm)
 import Data.Char
 
 type Balance = Int
