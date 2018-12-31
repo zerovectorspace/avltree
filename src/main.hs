@@ -1,18 +1,18 @@
 {-
   This file is part of AVLTree.
 
-  fct is free software: you can redistribute it and/or modify
+  AVLTree is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  fct is distributed in the hope that it will be useful,
+  AVLTree is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with fct.  If not, see <http://www.gnu.org/licenses/>.
+  along with AVLTree.  If not, see <http://www.gnu.org/licenses/>.
 
   Copyright 2018 Zachary Young
   -}
@@ -27,12 +27,14 @@ import Data.Char
 
 rMin = 1                                 -- Lower bound on random Int
 rMax = 100                               -- Upper bound on random Int
-num = 50                                 -- Number of branches
+num = 500                                 -- Number of branches
 bounds = (+rMin) . (`mod` (rMax-rMin+1)) -- [rMin,rMax] i.e. inclusive
 
 buildTree :: [(String,[Int])] -> T.AVLTree String [Int]
-buildTree = T.map (filter even) -- Keep only even numbers
-  . foldl (flip T.add) T.X      -- Apply T.add to create Tree
+{- buildTree = T.map (filter even) -- Keep only even numbers -}
+  {- . foldl (flip T.add) T.X      -- Apply T.add to create Tree -}
+
+buildTree = foldl (flip T.add) T.X      -- Apply T.add to create Tree
 
 kRnds :: POSIXTime -> [[Char]]
 kRnds = take num                              -- Take finite amount
@@ -57,6 +59,7 @@ main = do
   getPOSIXTime
   >>= \t ->
     print
+    {- . T.mapKey (\k -> k ++ "xxx")  -}
     . buildTree
     $ zip (kRnds t) (vRnds t)
 
