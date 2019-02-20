@@ -1,6 +1,6 @@
 # AVLTree in Haskell
 
-This is an implementation of an AVLTree in Haskell. This provides many convenient functions to manipulate, search, and travere an `AVLTree`
+This is an implementation of hash map using an AVLTree in Haskell. This provides many convenient functions to manipulate, search, and travere
 
 ## Compile and Run
 ```
